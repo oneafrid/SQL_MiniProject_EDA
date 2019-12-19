@@ -25,12 +25,7 @@ Write the query without using the OR operator. */
 
 SELECT * 
 FROM Facilities
-WHERE facid =1
-UNION 
-SELECT * 
-FROM Facilities
-WHERE facid =5
-ORDER BY facid
+WHERE facid in (1,5)
 
 /* Q5: How can you produce a list of facilities, with each labelled as
 'cheap' or 'expensive', depending on if their monthly maintenance cost is
@@ -63,7 +58,7 @@ FROM Facilities
 JOIN Bookings ON Facilities.facid = Bookings.facid
 JOIN Members ON Members.memid = Bookings.memid
 WHERE name LIKE  'Tennis Court%'
-GROUP BY 2 
+GROUP BY 1,2 
 ORDER BY 2
 
 /* Q8: How can you produce a list of bookings on the day of 2012-09-14 which
